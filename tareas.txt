@@ -1,3 +1,2 @@
 ;Completada
-;Pendiente
 prueba 1;Pendiente

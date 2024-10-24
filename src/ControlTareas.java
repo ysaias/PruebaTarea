@@ -81,6 +81,16 @@ public class ControlTareas {
 
     }
 
+    public void eliminarTarea(int index) {
+        //verifico que el inidice exista
+        if(index >= 0 && index < tareas.size()){
+            tareas.remove(index); // se elimina la tarea de la lista
+            guardarTarea(); // se reescribe el archivo así queda actualizada
+        }else {
+            System.out.println("Indice no valido");
+        }
+    }
+
 
     private void optenerTareasArchivoTxt() {
 
