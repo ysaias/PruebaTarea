@@ -45,6 +45,43 @@ public class ControlTareas {
         }
     }
 
+
+    public void tareaCompletada(int index) {
+       if (index >= 0 && index < tareas.size()){
+            tareas.get(index).setCompletada("Completada"); //Se marca como completada
+            guardarTarea(); // El archivo se actualiza
+        }else {
+            System.out.println("Tarea Completada Invalido");
+        }
+    }
+
+    public void tareasPendientes(){
+       if (tareas.isEmpty()){
+            System.out.println("No tiene tareas Pendientes");
+        }
+        for (int i = 0; i < tareas.size(); i++) {
+            Tarea tarea = tareas.get(i);
+           if (tarea.completada().equals("Pendiente")){
+                System.out.println(i + ": " + tarea.getTarea() + " " + tarea.completada());
+            }
+        }
+    }
+
+    public void guardarTarea() {
+
+       try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARCHIVO))){
+            for (Tarea tarea : tareas){
+
+                writer.write(tarea.getTarea() + ";" + tarea.completada());
+                writer.newLine();
+            }
+        }catch (IOException e){
+            System.out.println("Error guardar tareas: " + e.getMessage());
+        }
+
+    }
+
+
     private void optenerTareasArchivoTxt() {
 
         File archivo = new File(ARCHIVO);

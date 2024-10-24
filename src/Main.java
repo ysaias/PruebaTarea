@@ -11,7 +11,9 @@ public class Main {
             System.out.println("Agenda Tarea");
             System.out.println("1 Mostar Tareas");
             System.out.println("2 Guardar Tareas");
-            System.out.println("3 Dejar de Hacer Tareas");
+            System.out.println("3 Completar Tareas");
+            System.out.println("4 Mostar Tareas Pendientes");
+            System.out.println("5 Dejar de Hacer Tareas");
 
             int opcion = sc.nextInt();
             sc.nextLine();
@@ -30,6 +32,16 @@ public class Main {
                     System.out.println("Error al guardar tarea: " + e.getMessage());
                 }
             } else if (opcion == 3) {
+                System.out.println("Completar Tarea");
+                System.out.println("Ingrese el índice de la tarea a completar:");
+
+                int completarTarea = sc.nextInt();
+                controlTareas.tareaCompletada(completarTarea);
+
+            } else if (opcion == 4) {
+                System.out.println("Tareas Pendientes:");
+                controlTareas.tareasPendientes();
+            } else if (opcion == 5) {
                 hacerTarea = true;
             }
         }
